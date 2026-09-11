@@ -1,0 +1,324 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Kampung Indonesia design system.
+ * Warm institutional neutrals on a white canvas, with a single restrained
+ * red brand voltage reserved for accents and primary actions.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+  --radius-4xl: calc(var(--radius) + 32px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-warm: var(--surface-warm);
+  --color-ink-soft: var(--ink-soft);
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  --shadow-soft: 0 1px 2px oklch(0.2 0.02 40 / 0.04), 0 8px 24px -12px oklch(0.2 0.02 40 / 0.14);
+  --shadow-lift: 0 2px 4px oklch(0.2 0.02 40 / 0.05), 0 20px 48px -20px oklch(0.2 0.02 40 / 0.22);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.22 0.008 45);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.008 45);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.008 45);
+  --primary: oklch(0.56 0.2 22);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: oklch(0.965 0.017 25);
+  --primary-deep: oklch(0.47 0.19 21);
+  --secondary: oklch(0.968 0.004 60);
+  --secondary-foreground: oklch(0.22 0.008 45);
+  --muted: oklch(0.968 0.004 60);
+  --muted-foreground: oklch(0.52 0.012 55);
+  --accent: oklch(0.955 0.012 65);
+  --accent-foreground: oklch(0.22 0.008 45);
+  --destructive: oklch(0.56 0.2 22);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.918 0.004 60);
+  --border-strong: oklch(0.84 0.006 60);
+  --input: oklch(0.918 0.004 60);
+  --ring: oklch(0.56 0.2 22);
+  --surface: oklch(0.978 0.003 60);
+  --surface-warm: oklch(0.973 0.009 70);
+  --ink-soft: oklch(0.38 0.01 50);
+}
+
+.dark {
+  --background: oklch(0.17 0.006 50);
+  --foreground: oklch(0.97 0.003 60);
+  --card: oklch(0.22 0.008 50);
+  --card-foreground: oklch(0.97 0.003 60);
+  --popover: oklch(0.22 0.008 50);
+  --popover-foreground: oklch(0.97 0.003 60);
+  --primary: oklch(0.62 0.19 22);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: oklch(0.28 0.03 25);
+  --primary-deep: oklch(0.55 0.19 21);
+  --secondary: oklch(0.26 0.008 50);
+  --secondary-foreground: oklch(0.97 0.003 60);
+  --muted: oklch(0.26 0.008 50);
+  --muted-foreground: oklch(0.72 0.008 60);
+  --accent: oklch(0.28 0.008 50);
+  --accent-foreground: oklch(0.97 0.003 60);
+  --destructive: oklch(0.62 0.19 22);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --border-strong: oklch(1 0 0 / 22%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.19 22);
+  --surface: oklch(0.2 0.006 50);
+  --surface-warm: oklch(0.21 0.008 55);
+  --ink-soft: oklch(0.82 0.006 60);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+/* Layout ------------------------------------------------------------- */
+
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 4.5rem;
+
+  @media (min-width: 768px) {
+    padding-block: 6.5rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding-block: 8rem;
+  }
+}
+
+/* Typography --------------------------------------------------------- */
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+@utility label-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility display-1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.35rem, 5.2vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+}
+
+@utility display-2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@utility display-3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+}
+
+@utility lede {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+/* Components --------------------------------------------------------- */
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.8125rem 1.5rem;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+
+  &:hover {
+    background-color: var(--primary-deep);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@utility btn-outline {
+  background-color: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border-strong);
+
+  &:hover {
+    border-color: var(--foreground);
+    background-color: var(--surface);
+  }
+}
+
+@utility btn-ghost {
+  color: var(--foreground);
+
+  &:hover {
+    background-color: var(--surface);
+  }
+}
+
+@utility card-soft {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--shadow-lift);
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+  }
+}
+
+@utility media-frame {
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  background-color: var(--surface);
+
+  & img {
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@utility hover-zoom {
+  &:hover img {
+    transform: scale(1.045);
+  }
+}
+
+@utility chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background-color: var(--background);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--border-strong);
+    color: var(--foreground);
+  }
+}
+
+@utility rule-red {
+  width: 2.25rem;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 9999px;
+}
